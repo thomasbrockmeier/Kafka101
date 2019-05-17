@@ -29,7 +29,7 @@ object ProducerDemoKeys extends App {
               println("Timestamp: " + metadata.timestamp())
           }
       }
-    ).get()
+    ).get()  // Force synchronous execution, don't do this IRL
   }
   producer.close()
 
