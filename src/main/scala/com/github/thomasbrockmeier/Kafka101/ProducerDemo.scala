@@ -14,7 +14,7 @@ object ProducerDemo extends App {
   val producer = new KafkaProducer[String, String](properties)
 
   val record = new ProducerRecord[String, String]("first_topic", "Hello, World!")
-  
+
   producer.send(record)
   producer.close()
 
