@@ -36,16 +36,17 @@ object ConsumerDemoWithTreads extends App {
     }
 
     def shutdown(): Unit = {
+      println("ConsumerRunnable.shutdown()")
       consumer.wakeup()  // throws WakeUpException
     }
   }
 
-  val topic = "first_topic"
-  val bootstrapServers = "127.0.0.1:9092"
-  val groupId = "my-sixth-application"
+  private val topic = "first_topic"
+  private val bootstrapServers = "127.0.0.1:9092"
+  private val groupId = "my-sixth-application"
 
-  val consumerRunnable = new ConsumerRunnable(topic, bootstrapServers, groupId)
-  val thread: Thread = new Thread(consumerRunnable)
+  private val consumerRunnable = new ConsumerRunnable(topic, bootstrapServers, groupId)
+  private val thread: Thread = new Thread(consumerRunnable)
 
   sys.addShutdownHook({
     println("ShutdownHook")
